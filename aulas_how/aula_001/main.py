@@ -1,19 +1,21 @@
-import requests
-import pandas as pd
 import collections
+import requests
 import sys
+
+import pandas as pd
+
 
 #url = 'https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados?modalidade=Lotofácil'
 url = 'https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados?modalidade=Lotof%C3%A1cil'
 
-#caso for passar o link por parametro na chamado ou execução do python.
-#python main.py "url"
+# caso for passar o link por parametro na chamado ou execução do python.
+# python main.py "url"
 #url = sys.argv[1]
 
 r = requests.get(url, verify=False)
 
 r.text
-r_text = r.text.replace('\\r\\n','')
+r_text = r.text.replace('\\r\\n', '')
 r_text = r_text.replace('"\r\n}', '')
 r_text = r_text.replace('{\r\n "html": "', '')
 r_text
@@ -22,18 +24,19 @@ r_text
 
 df = pd.read_html(r_text)
 
-#aqui o df é uma lista
+# aqui o df é uma lista
 type(df)
 
-#fazer isso, pegar o primeiro elemento da lista -> esse valor é do do dataframe pandas
+# fazer isso, pegar o primeiro elemento da lista -> esse valor é do do dataframe pandas
 type(df[0])
 
-#sobrescreve a variavel com ela mesma (porem a posição zero da lista) e isso cria um dataframe pandas
-#tabela bonitinha linha a linha com todos os concursos
-df=df[0].copy()
+
+# sobrescreve a variavel com ela mesma (porem a posição zero da lista) e isso cria um dataframe pandas
+# tabela bonitinha linha a linha com todos os concursos
+df = df[0].copy()
 df = df.dropna()
 
-#caracteristica da lotofacil -> total de 25 numeros e voce escolhe apenas 15. Porem precisa colocar 26, para contar o 25.
+# caracteristica da lotofacil -> total de 25 numeros e voce escolhe apenas 15. Porem precisa colocar 26, para contar o 25.
 
 nr_pop = list(range(1, 26))
 nr_pares = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]
@@ -170,15 +173,15 @@ freq_nr.sort(key=lambda tup: tup[1])
 freq_nr[0]  # primeiro
 freq_nr[-1]  # ultimo
 
-#quantas vezes uma coleção aconteceu (aparece)
-#forma diferente de fazer teoricamente o que fez acima.
+# quantas vezes uma coleção aconteceu (aparece)
+# forma diferente de fazer teoricamente o que fez acima.
 counter = collections.Counter(comb)
 resultado = pd.DataFrame(counter.items(), columns=['Combinacao', 'Frequencia'])
 
-#forma de fazer o percentual (nao multiplicado por 100)
+# forma de fazer o percentual (nao multiplicado por 100)
 resultado['p_freq'] = resultado['Frequencia']/resultado['Frequencia'].sum()
 
-#ordenar
+# ordenar
 resultado = resultado.sort_values(by='p_freq')
 
 print('''
@@ -186,11 +189,9 @@ O número mais frequente é o:  {}
 O número menos frequente é o:  {}
 A combinação de Pares, Ímpares e Primos mais frequente é: {} com a frequencia de: {}%
 '''.format(freq_nr[-1][0], freq_nr[0][0], resultado['Combinacao'].values[-1], int((resultado['p_freq'].values[-1]*100)*100)/100)
-)
+      )
 
-#multiplica por 100 para ter o percentual,
-#multiplica novamente para fazer a vergula andar duas casas (gambiarra para pegar a parte interia de um percetual com 2 casas decimais)
-#pega a parte inteira com o int(valor) e divide por 100... assim tem a virgula com duas casas decimais.
-#int((resultado['p_freq'].values[-1]*100)*100)/100)
-
-
+# multiplica por 100 para ter o percentual,
+# multiplica novamente para fazer a vergula andar duas casas (gambiarra para pegar a parte interia de um percetual com 2 casas decimais)
+# pega a parte inteira com o int(valor) e divide por 100... assim tem a virgula com duas casas decimais.
+# int((resultado['p_freq'].values[-1]*100)*100)/100)
