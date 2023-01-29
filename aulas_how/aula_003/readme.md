@@ -1,0 +1,23 @@
+Obejetivos dessa atividade: Fundamentos da Ingestão de Dados.
+* Introdução a APIs e a request;
+* Tratar erros / retentativas;
+* Criando logs;
+* Ultilizando o Google Chrome Inspect;
+* Buscando dados de Imóveis;
+
+
+Links Uteis:
+
+* API Request - Cotação de moedas:
+    - [url = 'https://economia.awesomeapi.com.br/last/USD-BRL'](https://economia.awesomeapi.com.br/last/USD-BRL)
+* Google Inspect - Podcast (Capturar Episódios - Lista com nome e link)
+    - [url = 'https://portalcafebrasil.com.br/todos/podcasts/'](https://portalcafebrasil.com.br/todos/podcasts/)
+* Dados de Imóveis - Criar um BD capturando de um sie de imóvies, os imóveis la apresentados
+    - V1 - [url = 'https://www.vivareal.com.br/venda/parana/curitiba/apartamento_residencial/?pagina={}'](https://www.vivareal.com.br/venda/parana/curitiba/apartamento_residencial/?pagina={})
+        - obs: Esse link pode mudar conforme atualizações da caixa. Se isso ocorrer, precisa entrar no site da Viva Real e inspecionar novamente a página (ctrl shift i) e descobrir novamente esse link (aba network / ação resultados)
+            - Nesse caso, pegar a url paginando o site (pagina 2).
+            - Usar a Extensão Thunder Client para ajudar nessa atividade e testar a API
+        - Desatualizado
+    - V2 - [reqUrl = 'https://glue-api.vivareal.com/v2/listings?addressCity=Curitiba&addressLocationId=BR>...'](https://glue-api.vivareal.com/v2/listings?addressCity=Curitiba&addressLocationId=BR>Parana>NULL>Curitiba&addressNeighborhood=&addressState=Paraná&addressCountry=Brasil&addressStreet=&addressZone=&addressPointLat=-25.437238&addressPointLon=-49.269973&business=SALE&facets=amenities&unitTypes=&unitSubTypes=&unitTypesV3=&usageTypes=&listingType=USED&parentId=null&categoryPage=RESULT&includeFields=search(result(listings(listing(displayAddressType,amenities,usableAreas,constructionStatus,listingType,description,title,unitTypes,nonActivationReason,propertyType,unitSubTypes,id,portal,parkingSpaces,address,suites,publicationType,externalId,bathrooms,usageTypes,totalAreas,advertiserId,bedrooms,pricingInfos,showPrice,status,advertiserContact,videoTourLink,whatsappNumber,stamps),account(id,name,logoUrl,licenseNumber,showAddress,legacyVivarealId,phones),medias,accountLink,link)),totalCount),page,seasonalCampaigns,fullUriFragments,nearby(search(result(listings(listing(displayAddressType,amenities,usableAreas,constructionStatus,listingType,description,title,unitTypes,nonActivationReason,propertyType,unitSubTypes,id,portal,parkingSpaces,address,suites,publicationType,externalId,bathrooms,usageTypes,totalAreas,advertiserId,bedrooms,pricingInfos,showPrice,status,advertiserContact,videoTourLink,whatsappNumber,stamps),account(id,name,logoUrl,licenseNumber,showAddress,legacyVivarealId,phones),medias,accountLink,link)),totalCount)),expansion(search(result(listings(listing(displayAddressType,amenities,usableAreas,constructionStatus,listingType,description,title,unitTypes,nonActivationReason,propertyType,unitSubTypes,id,portal,parkingSpaces,address,suites,publicationType,externalId,bathrooms,usageTypes,totalAreas,advertiserId,bedrooms,pricingInfos,showPrice,status,advertiserContact,videoTourLink,whatsappNumber,stamps),account(id,name,logoUrl,licenseNumber,showAddress,legacyVivarealId,phones),medias,accountLink,link)),totalCount)),account(id,name,logoUrl,licenseNumber,showAddress,legacyVivarealId,phones,phones),developments(search(result(listings(listing(displayAddressType,amenities,usableAreas,constructionStatus,listingType,description,title,unitTypes,nonActivationReason,propertyType,unitSubTypes,id,portal,parkingSpaces,address,suites,publicationType,externalId,bathrooms,usageTypes,totalAreas,advertiserId,bedrooms,pricingInfos,showPrice,status,advertiserContact,videoTourLink,whatsappNumber,stamps),account(id,name,logoUrl,licenseNumber,showAddress,legacyVivarealId,phones),medias,accountLink,link)),totalCount)),owners(search(result(listings(listing(displayAddressType,amenities,usableAreas,constructionStatus,listingType,description,title,unitTypes,nonActivationReason,propertyType,unitSubTypes,id,portal,parkingSpaces,address,suites,publicationType,externalId,bathrooms,usageTypes,totalAreas,advertiserId,bedrooms,pricingInfos,showPrice,status,advertiserContact,videoTourLink,whatsappNumber,stamps),account(id,name,logoUrl,licenseNumber,showAddress,legacyVivarealId,phones),medias,accountLink,link)),totalCount))&size=36&from=36&q=&developmentsSize=5&__vt=&levels=CITY&ref=&pointRadius=&isPOIQuery=)
+        - Usar o Thunder Client para gerar seu request em {} (Code Snipped)
+            - [Dica](aulas_how/aula_003/assets/dica_thunder_client.jpeg)
