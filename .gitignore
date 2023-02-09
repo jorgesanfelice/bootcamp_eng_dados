@@ -116,6 +116,11 @@ __pypackages__/
 aula_004/db/
 aulas_how/aula_004/db/
 
+aulas_how/modulo_005/day-summary/
+modulo_005/day-summary/
+modulo_005/day-summary/ingestao_script_escalavel/__pycache__/
+DaySummaryIngestor.checkpoint
+
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
